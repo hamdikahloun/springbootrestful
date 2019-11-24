@@ -4,6 +4,11 @@ public class QuestionIDInput {
 	private int question_id;
 	private int user_id;
 
+	public QuestionIDInput(int question_id, int user_id) {
+		this.question_id = question_id;
+		this.user_id = user_id;
+	}
+
 	/**
 	 * @return the question_id
 	 */

@@ -5,6 +5,12 @@ public class AnswerInput {
 	private int question_id;
 	private int user_id;
 
+	public AnswerInput(String answer, int question_id, int user_id) {
+		this.answer = answer;
+		this.question_id = question_id;
+		this.user_id = user_id;
+	}
+
 	public String getAnswer() {
 		return answer;
 	}

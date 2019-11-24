@@ -36,7 +36,7 @@ public class UserService implements UserServiceInterface {
 			return new UserResponse(-1, "User already exists", null);
 		}
 		String password = generateRandomString(8);
-		User userToSave = new User(userInput.getEmail(), password);
+		User userToSave = new User(userInput.getEmail(), password,userInput.getName());
 		User userSaved = userRepository.saveAndFlush(userToSave);
 		UserResponse userResponse = new UserResponse(1, null, userSaved);
 		sendCredentialsEmail(userInput.getEmail(), password);

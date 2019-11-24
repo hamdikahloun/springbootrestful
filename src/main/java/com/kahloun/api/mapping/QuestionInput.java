@@ -3,6 +3,10 @@ package com.kahloun.api.mapping;
 public class QuestionInput {
 	private String question;
 
+	public QuestionInput(String question) {
+		this.question = question;
+	}
+
 	/**
 	 * @return the question
 	 */

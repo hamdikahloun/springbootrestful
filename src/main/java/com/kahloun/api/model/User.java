@@ -16,6 +16,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_id;
 	private String email;
+	private String name;
 	@JsonIgnore
 	private String password;
 	private Boolean confirmed;
@@ -25,9 +26,10 @@ public class User {
 
 	}
 
-	public User(String email, String password) {
+	public User(String email, String password,String name) {
 		this.email = email;
 		this.password = password;
+		this.name = name;
 	}
 
 	/**
@@ -84,6 +86,20 @@ public class User {
 	 */
 	public void setConfirmed(Boolean confirmed) {
 		this.confirmed = confirmed;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

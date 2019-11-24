@@ -4,6 +4,11 @@ public class SignInInput {
 	private String email;
 	private String password;
 
+	public SignInInput(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
+
 	/**
 	 * @return the email
 	 */
