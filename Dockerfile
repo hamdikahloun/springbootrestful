@@ -1,6 +1,3 @@
-FROM mysql
-ENV MYSQL_DATABASE company
-
 FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 MAINTAINER Hamdi Kahloun
 COPY pom.xml /build/
