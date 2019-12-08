@@ -5,7 +5,8 @@ COPY src /build/src/
 WORKDIR /build/
 RUN mvn package
 
-FROM openjdk:8-jre-alpine
-WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/docker-boot-intro-0.1.0.jar /app/
-ENTRYPOINT ["java", "-jar", "docker-boot-intro-0.1.0.jar"]
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
