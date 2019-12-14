@@ -19,6 +19,7 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int answer_id;
 	private int answer;
+	private String description;
 	private Date creation_date = new Date();
 	@OneToOne()
 	@JoinColumn(name = "skill_id")
@@ -32,10 +33,11 @@ public class Answer {
 
 	}
 
-	public Answer(int answer, Skill skill, User user) {
+	public Answer(int answer, Skill skill, User user,String description) {
 		this.answer = answer;
 		this.skill = skill;
 		this.user = user;
+		this.description = description;
 	}
 
 	public int getAnswer_id() {
@@ -88,6 +90,14 @@ public class Answer {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

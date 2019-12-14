@@ -43,7 +43,7 @@ public class AnswerService implements AnswerServiceInterface {
 		if (optionalAnswer.isPresent()) {
 			return new AnswerResponse(-3, "Skill already answered", null);
 		}
-		Answer answer = new Answer(answerInput.getAnswer(), skOptional.get(), user.get());
+		Answer answer = new Answer(answerInput.getAnswer(), skOptional.get(), user.get(), answerInput.getDescription());
 		Answer answerSaved = answerRepository.saveAndFlush(answer);
 		return new AnswerResponse(1, null, answerSaved);
 	}
