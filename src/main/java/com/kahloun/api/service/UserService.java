@@ -33,7 +33,7 @@ public class UserService implements UserServiceInterface {
 	public UserResponse addNewUser(UserInput userInput) {
 		User user = userRepository.findOneByEmail(userInput.getEmail());
 		if (user != null) {
-			return new UserResponse(-1, "User already exists", null);
+			return new UserResponse(-1, "User already exist", null);
 		}
 		String password = generateRandomString(8);
 		User userToSave = new User(userInput.getEmail(), password, userInput.getName());

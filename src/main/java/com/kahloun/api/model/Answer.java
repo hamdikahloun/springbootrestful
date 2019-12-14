@@ -19,7 +19,7 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int answer_id;
 	private int answer;
-	@JsonIgnore
+	private Date creation_date = new Date();
 	@OneToOne()
 	@JoinColumn(name = "skill_id")
 	private Skill skill;
@@ -27,7 +27,6 @@ public class Answer {
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private User user;
-	private Date creation_date = new Date();
 
 	public Answer() {
 

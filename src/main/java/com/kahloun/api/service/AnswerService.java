@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kahloun.api.mapping.AnswerInput;
 import com.kahloun.api.mapping.AnswerResponse;
 import com.kahloun.api.mapping.AnswersListResponse;
-import com.kahloun.api.mapping.SkillsIDInput;
+import com.kahloun.api.mapping.SkillsListInput;
 import com.kahloun.api.model.Answer;
 import com.kahloun.api.model.Skill;
 import com.kahloun.api.model.User;
@@ -39,6 +39,10 @@ public class AnswerService implements AnswerServiceInterface {
 		if (!user.isPresent()) {
 			return new AnswerResponse(-2, "Wrong User ID", null);
 		}
+		Optional<Answer> optionalAnswer = answerRepository.findBySkillAndUser(skOptional.get(), user.get());
+		if (optionalAnswer.isPresent()) {
+			return new AnswerResponse(-3, "Skill already answered", null);
+		}
 		Answer answer = new Answer(answerInput.getAnswer(), skOptional.get(), user.get());
 		Answer answerSaved = answerRepository.saveAndFlush(answer);
 		return new AnswerResponse(1, null, answerSaved);
@@ -61,18 +65,15 @@ public class AnswerService implements AnswerServiceInterface {
 	}
 
 	@Override
-	public AnswersListResponse findAnswersBySkillAndUser(SkillsIDInput skillsIDInput) {
-		System.out.print("findAnswersBySkillAndUser ==> skill ID: " + skillsIDInput.getSkill_id() + "\n");
-		Optional<Skill> skill = checkSkill(skillsIDInput.getSkill_id());
-		if (!skill.isPresent()) {
-			return new AnswersListResponse(-1, "Wrong Skill ID", null);
-		}
-		Optional<User> user = userRepository.findById(skillsIDInput.getUser_id());
+	public AnswersListResponse findAnswersByUser(SkillsListInput skillsListInput) {
+		System.out.print("findAnswersByUser ==> User ID: " + skillsListInput.getUser_id() + "\n");
+
+		Optional<User> user = userRepository.findById(skillsListInput.getUser_id());
 		if (!user.isPresent()) {
 			return new AnswersListResponse(-2, "Wrong User ID", null);
 		}
 
-		List<Answer> answers = answerRepository.findBySkillAndUser(skill.get(), user.get());
+		List<Answer> answers = answerRepository.findByUser(user.get());
 		return new AnswersListResponse(1, null, answers);
 	}
 
