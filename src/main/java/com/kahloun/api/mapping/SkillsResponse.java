@@ -1,13 +1,13 @@
 package com.kahloun.api.mapping;
 
-import com.kahloun.api.model.Question;
+import com.kahloun.api.model.Skill;
 
-public class QuestionResponse {
+public class SkillsResponse {
 	private int code;
 	private String error;
-	private Question data;
+	private Skill data;
 
-	public QuestionResponse(int code, String error, Question data) {
+	public SkillsResponse(int code, String error, Skill data) {
 		this.code = code;
 		this.error = error;
 		this.data = data;
@@ -29,11 +29,11 @@ public class QuestionResponse {
 		this.error = error;
 	}
 
-	public Question getData() {
+	public Skill getData() {
 		return data;
 	}
 
-	public void setData(Question data) {
+	public void setData(Skill data) {
 		this.data = data;
 	}
 

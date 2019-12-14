@@ -49,11 +49,4 @@ public class UserEndpoint {
 		return userService.signIn(sinInInput);
 	}
 
-	@CrossOrigin()
-	@RequestMapping(value = "/users/confirm", method = RequestMethod.POST)
-	@ApiOperation(value = "\nConfirm answering all the questions, Confirmation Email will be sent to user \n", notes = "\nCode 1 : User confirmed successfully.\n"
-			+ "\n Code -1 : User does not exist.\n", response = UserResponse.class)
-	public UserResponse signIn(@Valid @RequestBody UserInput userInput) {
-		return userService.confirmAnswers(userInput);
-	}
 }

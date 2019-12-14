@@ -2,14 +2,14 @@ package com.kahloun.api.mapping;
 
 import java.util.List;
 
-import com.kahloun.api.model.Question;
+import com.kahloun.api.model.Skill;
 
-public class QuestionListResponse {
+public class SkillsListResponse {
 	private int code;
 	private String error;
-	private List<Question> data;
+	private List<Skill> data;
 
-	public QuestionListResponse(int code, String error, List<Question> data) {
+	public SkillsListResponse(int code, String error, List<Skill> data) {
 		this.code = code;
 		this.error = error;
 		this.data = data;
@@ -31,11 +31,11 @@ public class QuestionListResponse {
 		this.error = error;
 	}
 
-	public List<Question> getData() {
+	public List<Skill> getData() {
 		return data;
 	}
 
-	public void setData(List<Question> data) {
+	public void setData(List<Skill> data) {
 		this.data = data;
 	}
 

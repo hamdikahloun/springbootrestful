@@ -8,36 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Question {
+public class Skill {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int question_id;
-	private String question;
+	private int skill_id;
+	private String skill;
 	private Date creation_date = new Date();
 
-	public Question() {
+	public Skill() {
 
 	}
 
-	public Question(String question) {
-		this.question = question;
-	}
-
-	public int getQuestion_id() {
-		return question_id;
-	}
-
-	public void setQuestion_id(int question_id) {
-		this.question_id = question_id;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
+	public Skill(String skill) {
+		this.skill = skill;
 	}
 
 	/**
@@ -52,6 +36,22 @@ public class Question {
 	 */
 	public void setCreation_date(Date creation_date) {
 		this.creation_date = creation_date;
+	}
+
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+
+	public int getSkill_id() {
+		return skill_id;
+	}
+
+	public void setSkill_id(int skill_id) {
+		this.skill_id = skill_id;
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,11 +18,11 @@ public class Answer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int answer_id;
-	private String answer;
+	private int answer;
 	@JsonIgnore
-	@ManyToOne()
-	@JoinColumn(name = "question_id")
-	private Question question;
+	@OneToOne()
+	@JoinColumn(name = "skill_id")
+	private Skill skill;
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
@@ -32,9 +33,9 @@ public class Answer {
 
 	}
 
-	public Answer(String answer, Question question, User user) {
+	public Answer(int answer, Skill skill, User user) {
 		this.answer = answer;
-		this.question = question;
+		this.skill = skill;
 		this.user = user;
 	}
 
@@ -46,20 +47,20 @@ public class Answer {
 		this.answer_id = answer_id;
 	}
 
-	public String getAnswer() {
+	public int getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(int answer) {
 		this.answer = answer;
 	}
 
-	public Question getQuestion() {
-		return question;
+	public Skill getSkill() {
+		return skill;
 	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
+	public void setSkill(Skill skill) {
+		this.skill = skill;
 	}
 
 	/**

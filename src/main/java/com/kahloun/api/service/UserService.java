@@ -36,23 +36,10 @@ public class UserService implements UserServiceInterface {
 			return new UserResponse(-1, "User already exists", null);
 		}
 		String password = generateRandomString(8);
-		User userToSave = new User(userInput.getEmail(), password,userInput.getName());
+		User userToSave = new User(userInput.getEmail(), password, userInput.getName());
 		User userSaved = userRepository.saveAndFlush(userToSave);
-		UserResponse userResponse = new UserResponse(1, null, userSaved);
 		sendCredentialsEmail(userInput.getEmail(), password);
-		return userResponse;
-	}
-
-	@Override
-	public UserResponse confirmAnswers(UserInput userInput) {
-		User user = userRepository.findOneByEmail(userInput.getEmail());
-		if (user == null) {
-			return new UserResponse(-1, "User does not exist", null);
-		}
-		user.setConfirmed(true);
-		User userSaved = userRepository.saveAndFlush(user);
 		UserResponse userResponse = new UserResponse(1, null, userSaved);
-		sendConfirmationEmail(userInput.getEmail());
 		return userResponse;
 	}
 
@@ -79,21 +66,9 @@ public class UserService implements UserServiceInterface {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(email);
 
-		msg.setSubject("Journi Credentials");
-		msg.setText("Hello; \nPlease use this credentials for journi questions application :\n" + "Email: " + email
-				+ "\n" + "Password: " + password + "\n");
-
-		javaMailSender.send(msg);
-
-	}
-
-	@Override
-	public void sendConfirmationEmail(String email) {
-		SimpleMailMessage msg = new SimpleMailMessage();
-		msg.setTo(email);
-
-		msg.setSubject("Journi Confirmation");
-		msg.setText("Hello; \nWe have confirmed your Answers.\n");
+		msg.setSubject("Credentials");
+		msg.setText("Hello; \nPlease use this credentials for Skill application :\n" + "Email: " + email + "\n"
+				+ "Password: " + password + "\n");
 
 		javaMailSender.send(msg);
 

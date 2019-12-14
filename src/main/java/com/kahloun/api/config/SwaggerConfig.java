@@ -24,7 +24,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("Demo REST API for Journi", "REST API for Journi Recruitment.", "API Journi",
+		return new ApiInfo("Demo REST API for Tractive", "REST API for Tractive Recruitment.", "API Tractive",
 				"Terms of service",
 				new Contact("Hamdi Kahloun", "https://api.kahloun.online", "hamdikahlounacil@gmail.com"),
 				"https://api.kahloun.online", "API license URL", Collections.emptyList());

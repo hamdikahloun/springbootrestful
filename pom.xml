@@ -12,9 +12,9 @@
 	<groupId>com.kahloun</groupId>
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>api</name>
-	<description>Demo project for Journi</description>
+	<description>Demo project for Tractive</description>
 
 	<properties>
 		<java.version>1.8</java.version>

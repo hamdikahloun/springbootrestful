@@ -1,26 +1,12 @@
 package com.kahloun.api.mapping;
 
-public class AnswerInput {
-	private int answer;
+public class SkillsIDInput {
 	private int skill_id;
 	private int user_id;
 
-	public AnswerInput(int answer, int skill_id, int user_id) {
-		this.answer = answer;
+	public SkillsIDInput(int skill_id, int user_id) {
 		this.skill_id = skill_id;
 		this.user_id = user_id;
-	}
-
-	public int getAnswer() {
-		return answer;
-	}
-
-	public AnswerInput() {
-
-	}
-
-	public void setAnswer(int answer) {
-		this.answer = answer;
 	}
 
 	/**
@@ -44,5 +30,4 @@ public class AnswerInput {
 	public void setSkill_id(int skill_id) {
 		this.skill_id = skill_id;
 	}
-
 }
